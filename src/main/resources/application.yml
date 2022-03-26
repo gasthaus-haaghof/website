@@ -1,0 +1,13 @@
+spring:
+  config:
+    api:
+      google:
+        placeid: ${PROD.GOOGLE.PLACEID:null}
+        key: ${PROD.GOOGLE.KEY:null}
+
+    production:
+      url: ${PROD.URL}
+
+server:
+  error:
+    include-stacktrace: never

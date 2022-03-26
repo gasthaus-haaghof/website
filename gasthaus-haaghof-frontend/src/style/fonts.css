@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Hurricane&family=Lato:wght@100;300;400;900&display=swap');
+
+* {
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 400 !important;
+}
+
+.cursive {
+    font-family: 'Hurricane', sans-serif !important;
+}
+
+.bold {
+    font-family: 'Lato', sans-serif !important;
+    font-weight: 900 !important;
+}
+
+
