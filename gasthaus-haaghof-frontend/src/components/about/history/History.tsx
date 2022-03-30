@@ -3,15 +3,15 @@ import React from "react";
 import AboutUsOne from "../../../images/aboutus-1.png";
 import AboutUsTwo from "../../../images/aboutus-2.png";
 import AboutUsThree from "../../../images/aboutus-3.png";
-import {HistoryPart} from "./HistoryPart";
 import {Typography} from "@mui/material";
 import styled from "@emotion/styled";
+import {TextPart} from "../TextPart";
 
 export const History = () => {
     return(
         <StyledHistory>
-            <Typography variant="h3">Die Geschichte vom Haaghof</Typography>
-            <HistoryPart
+            <Typography className="heading-history" variant="h3">Die Geschichte vom Haaghof</Typography>
+            <TextPart
                 text={
                     <span>
                             Der Haaghof bestand schon vor dem Dreißigjährigen Krieg, ist aber während dieser Kriegswirren verödet. <br/>
@@ -24,7 +24,7 @@ export const History = () => {
                 textFirst={false}
                 pictureImport={AboutUsOne}
             />
-            <HistoryPart
+            <TextPart
                 text={
                     <span>
                             <span className="important">1906</span> wurde von Johann Schuh (Urenkel des Erbauers) ein Anbau erstellt. <br/>
@@ -36,7 +36,7 @@ export const History = () => {
                 textFirst
                 pictureImport={AboutUsTwo}
             />
-            <HistoryPart
+            <TextPart
                 text={
                     <span>
                         Seit <span className="important">April 2010</span> führen <span className="important">Andreas</span> und <span className="important">Katrin Kamberger</span> das Gasthaus, das seit <span className="important">1717 in Familienbesitz</span> ist. <br/>

@@ -1,19 +1,44 @@
 import {ReviewOverview} from "./review/ReviewOverview";
 import styled from "@emotion/styled";
-import {Header} from "../Header";
+import {Header} from "../header/Header";
 import {Welcome} from "./Welcome";
 import {OpeningHours} from "./OpeningHours";
 import {ContactShort} from "../contact/ContactShort";
 import {HistoryShort} from "../about/history/HistoryShort";
 import {PictureSeries} from "./picture-series/PictureSeries";
+import {useEffect, useState} from "react";
+import {NewsType} from "../../types/NewsType";
+import {Api} from "../../api/api";
+import {Alert, AlertTitle, Button, Snackbar} from "@mui/material";
+import {StringUtils} from "../../utils/string";
 
 export const Home = () => {
+    const [latestImportantNews, setLatestImportantNews] = useState<NewsType | null>(null);
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        Api.News.getLatestImportant()
+            .then(result => setLatestImportantNews(result));
+    }, []);
+
+    useEffect(() => {
+        if (latestImportantNews) {
+            setOpen(true);
+        }
+    }, [latestImportantNews]);
+
+    const handleSnackbarClose = () => {
+        setOpen(false);
+    };
+
     return(
         <>
             <Header />
-            <StyledHome>
+            <StyledHome className="home">
                 <Welcome />
-                <StyledTwoGrid>
+                <StyledTwoGrid className="home-two">
                     <OpeningHours />
                     <HistoryShort />
                 </StyledTwoGrid>
@@ -21,6 +46,28 @@ export const Home = () => {
                 <ContactShort />
                 <PictureSeries />
             </StyledHome>
+
+            <Snackbar
+                id="important-news"
+                anchorOrigin={{ horizontal: "left", vertical: "top" }}
+                open={open}
+                onClose={handleSnackbarClose}
+                style={{
+                    maxWidth: "50ch",
+                    transition: "margin-top 0.15s ease-in-out"
+                }}
+            >
+                <Alert
+                    severity="warning"
+                   action={
+                       <Button color="inherit" size="small" variant="outlined" onClick={() => window.location.pathname = `/news/${latestImportantNews?.id}`}>
+                           Lesen
+                       </Button>
+                   }>
+                    <AlertTitle>{latestImportantNews?.heading}</AlertTitle>
+                    {latestImportantNews && StringUtils.substr(latestImportantNews.text, 100)}
+                </Alert>
+            </Snackbar>
         </>
     );
 };

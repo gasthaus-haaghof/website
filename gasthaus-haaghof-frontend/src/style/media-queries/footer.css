@@ -1,0 +1,8 @@
+@media screen and (max-width: 500px) {
+  div.footer {
+    padding: 2rem;
+    margin: 2rem 0; } }
+
+@media screen and (max-width: 385px) {
+  div.footer {
+    text-align: center; } }

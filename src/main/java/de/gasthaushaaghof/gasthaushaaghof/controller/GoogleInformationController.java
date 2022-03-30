@@ -1,5 +1,6 @@
 package de.gasthaushaaghof.gasthaushaaghof.controller;
 
+import de.gasthaushaaghof.gasthaushaaghof.model.google.ContactInformation;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.GoogleInformation;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.OpeningHours;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.Review;
@@ -30,5 +31,10 @@ public class GoogleInformationController {
     @GetMapping(path = "/opening-hours")
     public OpeningHours getOpeningHoursFromGoogle() {
         return googleInformationService.getOpeningHoursFromGoogle();
+    }
+
+    @GetMapping("/contact-information")
+    public ContactInformation getContactInformationFromGoogle() {
+        return googleInformationService.getContactInformationFromGoogle();
     }
 }

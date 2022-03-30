@@ -9,7 +9,7 @@ interface MealProps {
 
 export const Meal = ({ meal }: MealProps) => {
     return(
-        <StyledMeal style={{
+        <StyledMeal className="meal" style={{
             gridTemplateRows: `repeat(${meal.additionalComponents ? 2 : 1}, auto)`,
             gridTemplateAreas: `"main" ${meal.additionalComponents && `"additional"`}`,
         }}>

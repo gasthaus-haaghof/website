@@ -2,33 +2,33 @@ import React from "react";
 import styled from "@emotion/styled";
 import {Typography} from "@mui/material";
 
-interface HistoryPartProps {
+interface TextPartProps {
     text: JSX.Element,
     textFirst: boolean,
     pictureImport: string,
 }
 
-export const HistoryPart = ({ text, textFirst, pictureImport }: HistoryPartProps) => {
+export const TextPart = ({ text, textFirst, pictureImport }: TextPartProps) => {
     return(
-        <StyledHistoryPart style={{
+        <StyledTextPart style={{
             gridTemplateColumns: `auto ${textFirst ? "40rem 30rem" : "30rem 40rem"} auto`,
             gridTemplateAreas: `". ${textFirst ? "text picture" : "picture text"} ."`,
         }}
-            className="background"
+            className="text-part"
         >
-            <StyledText style={{
+            <StyledText className="text" style={{
                 textAlign: `${textFirst ? "end" : "start"}`
             }}>
                 <Typography>
                     {text}
                 </Typography>
             </StyledText>
-            <StyledPicture style={{ backgroundImage: `url(${pictureImport})` }}/>
-        </StyledHistoryPart>
+            <StyledPicture className="picture" style={{ backgroundImage: `url(${pictureImport})` }}/>
+        </StyledTextPart>
     );
 };
 
-const StyledHistoryPart = styled.div`
+const StyledTextPart = styled.div`
     display: grid;
     width: 100%;
     padding: 2rem 0;

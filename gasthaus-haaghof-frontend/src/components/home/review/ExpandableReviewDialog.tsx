@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Rating} from "@mui/material";
-import {ReviewType} from "../../../types/ReviewType";
+import {ReviewType} from "../../../types/google/ReviewType";
 
 interface ExpandableReviewDialogProps {
     open: boolean,

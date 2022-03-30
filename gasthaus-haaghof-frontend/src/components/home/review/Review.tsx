@@ -1,14 +1,16 @@
-import {ReviewType} from "../../../types/ReviewType";
+import {ReviewType} from "../../../types/google/ReviewType";
 import styled from "@emotion/styled";
 import {Rating, Typography} from "@mui/material";
 import React, {ReactElement, useState} from "react";
 import {ExpandableReviewDialog} from "./ExpandableReviewDialog";
+import {StringUtils} from "../../../utils/string";
 
 interface ReviewData {
     review: ReviewType;
+    index: number
 }
 
-export const Review = ({ review } : ReviewData) => {
+export const Review = ({ review, index } : ReviewData) => {
     const [open, setOpen] = useState(false);
 
     const handleExpand = () => {
@@ -22,7 +24,7 @@ export const Review = ({ review } : ReviewData) => {
     const formatText = (): ReactElement => {
         return(
             <>
-                <Typography gridArea="text"><i>{review.text.substring(0, 200)}{review.text.length > 200 && `...`}</i></Typography>
+                <Typography gridArea="text"><i>{StringUtils.substr(review.text, 200)}</i></Typography>
                 { review.text.length > 200 && <a onClick={handleExpand}>Mehr lesen</a> }
             </>
         );
@@ -30,7 +32,7 @@ export const Review = ({ review } : ReviewData) => {
 
     return(
         <>
-            <StyledReview>
+            <StyledReview className={`${index}`}>
                 <Typography gridArea="name">{review.authorName}</Typography>
                 <Rating value={review.rating} readOnly style={{ justifySelf: "end" }}/>
                 {formatText()}

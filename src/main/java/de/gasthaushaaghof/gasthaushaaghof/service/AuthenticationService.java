@@ -9,13 +9,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final AuthenticationRepository authenticationRepository;
+    private final TokenService tokenService;
 
-    public UserInfo loginUser(UserInfo userInfo) {
+    public UUID loginUser(UserInfo userInfo) {
         var user = authenticationRepository.getByName(userInfo.getUsername())
                 .orElseThrow(InvalidCredentialsException::new);
 
@@ -23,7 +25,7 @@ public class AuthenticationService {
             throw new InvalidCredentialsException();
         }
 
-        return user;
+        return tokenService.getSecretToken();
     }
 
     private String shaPassword(String password) {

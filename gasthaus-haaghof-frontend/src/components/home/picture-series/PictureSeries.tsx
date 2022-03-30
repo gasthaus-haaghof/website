@@ -12,7 +12,7 @@ export const PictureSeries = () => {
     const [pictures] = useState([FoodOne, FoodTwo, FoodThree, HouseOne, HouseTwo]);
 
     return(
-        <StyledPictureSeries>
+        <StyledPictureSeries className="picture-series">
             { pictures.map((picture, index) =>
                 <Picture
                     key={index}

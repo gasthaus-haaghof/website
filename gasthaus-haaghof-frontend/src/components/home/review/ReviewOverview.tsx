@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Api} from "../../../api/api";
-import {ReviewType} from "../../../types/ReviewType";
+import {ReviewType} from "../../../types/google/ReviewType";
 import {Review} from "./Review";
 import styled from "@emotion/styled";
 import {CircularProgress, Typography} from "@mui/material";
@@ -10,7 +10,7 @@ export const ReviewOverview = () => {
     const [isWaiting, setWaiting] = useState(true);
 
     useEffect(() => {
-        Api.getReviewsFromGoogle()
+        Api.Google.getReviews()
             .then(result => {
                 setReviews(filterReviews(result));
                 setWaiting(false);
@@ -18,12 +18,12 @@ export const ReviewOverview = () => {
     }, []);
 
     return(
-        <StyledWrapper>
+        <StyledWrapper className="rating-overview">
             <Typography variant="h3" gridArea="text">Das sagen unsere Gäste</Typography>
-            <StyledReviewOverview style={{ gridTemplateColumns: `repeat(${reviews.length}, auto)` }}>
+            <StyledReviewOverview className="reviews" style={{ gridTemplateColumns: `repeat(${reviews.length}, auto)` }}>
                 { isWaiting ? <CircularProgress /> :
                     reviews.map((currentReview, index) =>
-                        <Review key={index} review={currentReview}/>)
+                        <Review key={index} review={currentReview} index={index}/>)
                 }
             </StyledReviewOverview>
         </StyledWrapper>

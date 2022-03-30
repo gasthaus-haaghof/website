@@ -5,8 +5,11 @@ spring:
         placeid: ${PROD.GOOGLE.PLACEID:null}
         key: ${PROD.GOOGLE.KEY:null}
 
+    supabase:
+      key: ${PROD.SUPABASE.KEY:null}
+
     production:
-      url: ${PROD.URL}
+      url: ${PROD.URL:null}
 
 server:
   error:

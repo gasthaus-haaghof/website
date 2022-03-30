@@ -15,7 +15,7 @@ export const MenuPart = ({ menuPart }: MenuPartProps) => {
                 <Typography variant="h3" className="cursive">
                     {menuPart.heading}
                 </Typography>
-                <StyledDivider/>
+                <StyledDivider className="menu-divider"/>
             </StyledHeading>
             { menuPart.meal.map(meal => <Meal key={`${menuPart.id}${meal.id}`} meal={meal} />) }
         </StyledMenuPart>

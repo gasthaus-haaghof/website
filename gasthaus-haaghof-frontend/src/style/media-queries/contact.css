@@ -1,0 +1,38 @@
+@media screen and (max-width: 790px) {
+  div.contact {
+    width: calc(100% - 6rem); }
+    div.contact div.contact-form {
+      grid-template-areas: "name" "mail" "reason" "submit" "info"; }
+    div.contact div.address {
+      width: calc(100% + 6rem);
+      background: #191919;
+      color: white;
+      padding: 2rem 0; }
+      div.contact div.address::after {
+        content: "";
+        position: absolute;
+        background: #191919;
+        width: 100%;
+        height: 22rem;
+        z-index: -1; } }
+
+@media screen and (max-width: 500px) {
+  div.wavy {
+    display: inline-block !important;
+    z-index: -1; } }
+
+@media screen and (max-width: 450px) {
+  div.contact h3 {
+    font-size: 40px; }
+  div.contact h6.long {
+    display: none; }
+  div.contact h6.short {
+    display: inline-block; } }
+
+@media screen and (max-width: 385px) {
+  div.contact > div.address::after {
+    height: 25rem; } }
+
+@media screen and (max-width: 340px) {
+  div.contact > div.address::after {
+    height: 27rem; } }

@@ -23,7 +23,9 @@ public class GenericSupabaseRepository<T, ID> {
 
     private final Class<T> clazz;
     private final String route;
-    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @SuppressWarnings("unchecked")
     public GenericSupabaseRepository() {

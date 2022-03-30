@@ -1,0 +1,39 @@
+@media screen and (max-width: 1150px)
+  div.text-part
+    grid-template-columns: auto repeat(2, 25rem) auto !important
+
+    > div.picture
+      background-position: 50% 50%
+
+@media screen and (max-width: 850px)
+  div.text-part
+    grid-template-columns: auto 35rem auto !important
+    grid-template-rows: 25rem fit-content(25rem)
+    grid-template-areas: ". picture ." ". text ." !important
+    gap: 1rem
+
+    > div.text
+      text-align: center !important
+
+@media screen and (max-width: 630px)
+  h3.heading-history
+    font-size: 36px
+
+  div.text-part
+    grid-template-columns: auto 25rem auto !important
+
+@media screen and (max-width: 475px)
+  h3.heading-history
+    text-align: center
+
+  div.text-part
+    grid-template-columns: auto 25rem auto !important
+
+@media screen and (max-width: 475px)
+  div.text-part
+    grid-template-columns: auto 20rem auto !important
+    grid-template-rows: 20rem fit-content(25rem)
+
+    > div.text
+      padding: 2rem 0 0 0
+      text-align: start !important

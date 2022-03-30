@@ -3,6 +3,9 @@ import {useEffect, useState} from "react";
 import {UserInfoType} from "../../types/UserInfoType";
 import styled from "@emotion/styled";
 import {Typography} from "@mui/material";
+import {Menu} from "./sub-components/menu/Menu";
+import {News} from "./sub-components/news/News";
+import {User} from "./sub-components/user/User";
 
 interface AdminProps {
     authenticated: boolean,
@@ -33,10 +36,16 @@ const AdminInterface = ({ user }: AdminInterfaceProps) => {
                 <StyledNavigation>
                     <Typography className="navigation-element" onClick={() => setView("menu")}>Speisekarte bearbeiten</Typography>
                     <Typography className="navigation-element" onClick={() => setView("news")}>News veröffentlichen</Typography>
-                    <Typography className="navigation-element" onClick={() => setView("new")}>Neuen User anlegen</Typography>
+                    <Typography className="navigation-element" onClick={() => setView("newUser")}>Neuen User anlegen</Typography>
                     <Typography className="navigation-element" onClick={() => window.location.pathname = "/"}>Abmelden</Typography>
                 </StyledNavigation>
             </StyledHeader>
+            {
+                view === "menu" ? <Menu /> :
+                view === "news" ? <News /> :
+                view === "newUser" ? <User /> :
+                <></>
+            }
         </StyledAdminInterface>
   );
 };
@@ -46,6 +55,8 @@ const StyledAdminInterface = styled.div`
 `;
 
 const StyledHeader = styled.div`
+    margin-bottom: 5rem;
+    
     > h2 {
         margin-left: 1rem;
     }

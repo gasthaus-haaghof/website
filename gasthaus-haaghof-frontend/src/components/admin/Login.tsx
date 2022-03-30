@@ -26,7 +26,7 @@ export const Login = ({ onAuthenticationChange, authenticated }: LoginProps) => 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSnackbarClose = (event: any) => {
+    const handleSnackbarClose = () => {
         setOpen(false);
     };
 
@@ -35,7 +35,7 @@ export const Login = ({ onAuthenticationChange, authenticated }: LoginProps) => 
     };
 
     const handleLoginAttempt = () => {
-        Api.login({username, password})
+        Api.Admin.login({username, password})
             .then(response => handleSuccessfulLogin(response))
             .catch(_ => setOpen(true));
     };
@@ -55,6 +55,7 @@ export const Login = ({ onAuthenticationChange, authenticated }: LoginProps) => 
                         type={isHiding ? "password" : "text"}
                         placeholder="Passwort"
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && handleLoginAttempt()}
                     />
 
                     <FormGroup>

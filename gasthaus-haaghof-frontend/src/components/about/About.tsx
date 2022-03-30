@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Header} from "../Header";
+import {Header} from "../header/Header";
 import styled from "@emotion/styled";
 import {History} from "./history/History";
 

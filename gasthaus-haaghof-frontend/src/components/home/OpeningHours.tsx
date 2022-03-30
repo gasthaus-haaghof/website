@@ -1,6 +1,6 @@
 import {CircularProgress, LinearProgress, Typography} from "@mui/material";
 import {useEffect, useState} from "react";
-import {OpeningHoursType} from "../../types/OpeningHoursType";
+import {OpeningHoursType} from "../../types/google/OpeningHoursType";
 import {Api} from "../../api/api";
 import styled from "@emotion/styled";
 import React from "react";
@@ -10,7 +10,7 @@ export const OpeningHours = () => {
     const [isWaiting, setWaiting] = useState(true);
 
     useEffect(() => {
-        Api.getOpeningHoursFromGoogle()
+        Api.Google.getOpeningHours()
             .then(result => {
                 setOpeningHours(result);
                 setWaiting(false);
@@ -18,7 +18,7 @@ export const OpeningHours = () => {
     }, []);
 
     return(
-        <StyledOpeningHours>
+        <StyledOpeningHours className="opening-hours">
             <Typography variant="h4" gridArea="heading" style={{ marginBottom: "2rem"}}>Unsere Öffnungszeiten</Typography>
             { isWaiting ? <CircularProgress style={{
                     marginTop: "5rem",
@@ -36,7 +36,7 @@ const reformatText = (weekday: string, index: number): JSX.Element => {
     return(
         <React.Fragment key={index}>
             <Typography gridArea={`day${split[0]}`} className="day">{split[0]}:</Typography>
-            <Typography>{split[1] === "Geschlossen" ? "Ruhetag" : split[1]}</Typography>
+            <Typography>{split[1] === "Geschlossen" ? "Ruhetag" : split[1].replaceAll("–", " – ")}</Typography>
         </React.Fragment>
     );
 };

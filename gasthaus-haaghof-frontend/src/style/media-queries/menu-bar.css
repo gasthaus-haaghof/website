@@ -1,0 +1,15 @@
+@media screen and (max-width: 500px) {
+  div#menu-bar {
+    grid-template-columns: 4rem auto !important;
+    grid-template-areas: "menu-bar-icon-mobile currently-shown";
+    justify-items: start; }
+    div#menu-bar > svg.menu-bar-icon-mobile, div#menu-bar p.currently-shown {
+      display: inline-block !important; }
+    div#menu-bar > a {
+      display: none; } }
+
+.shown {
+  margin-left: 0 !important; }
+
+.shown-background {
+  opacity: 1 !important; }

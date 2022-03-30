@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export const HistoryShort = () => {
     return(
-        <StyledHistoryShort>
+        <StyledHistoryShort className="history-short">
             <Typography variant="h4" style={{ marginBottom: "3rem" }}>Ein Gasthaus mit Geschichte</Typography>
             <Typography>
 

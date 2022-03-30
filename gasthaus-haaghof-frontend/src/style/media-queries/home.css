@@ -1,0 +1,96 @@
+@media screen and (max-width: 1200px) {
+  div.welcome, div.rating-overview {
+    grid-template-columns: auto 50rem auto; }
+  div.home-two {
+    width: 60rem; } }
+
+@media screen and (max-width: 1200px) {
+  div.home-two {
+    width: 50rem;
+    grid-template-columns: repeat(2, 25rem); }
+    div.home-two div.history-short {
+      width: 100%;
+      padding-right: 2rem; } }
+
+@media screen and (max-width: 865px) {
+  div.welcome, div.rating-overview {
+    grid-template-columns: auto 40rem auto; }
+  div.home {
+    margin-top: 3rem; }
+  div.home-two {
+    width: 100%;
+    grid-template-columns: auto;
+    grid-template-areas: "opening-hours";
+    justify-items: center; }
+    div.home-two div.history-short {
+      display: none; }
+  div.welcome > h4.welcome-subtitle {
+    padding: 0 2rem; } }
+
+@media screen and (max-width: 865px) {
+  div.rating-overview > div.reviews {
+    grid-template-columns: auto auto !important;
+    gap: 5rem 2rem;
+    padding: 0 5rem; } }
+
+@media screen and (max-width: 710px) {
+  div.contact-short > h4 {
+    padding: 0 2rem;
+    text-align: center; }
+  div.welcome {
+    grid-template-columns: auto;
+    grid-template-areas: "welcome" "subtitle" "direction";
+    padding: 0 5rem; }
+  div.rating-overview {
+    grid-template-columns: auto;
+    grid-template-areas: "text" "reviews"; }
+    div.rating-overview > div.reviews {
+      grid-template-columns: auto !important; } }
+
+@media screen and (max-width: 599px) {
+  #important-news {
+    margin-top: 0 !important;
+    justify-self: center; }
+  div.rating-overview > h3 {
+    text-align: center; }
+  div.picture-series {
+    height: 12.5rem; } }
+
+@media screen and (max-width: 470px) {
+  div.welcome {
+    padding: 0 3rem; }
+    div.welcome h4.welcome-subtitle {
+      font-size: 28px;
+      padding: 1rem 0; }
+    div.welcome div.direction {
+      text-align: start; }
+      div.welcome div.direction div.googlemaps-wrapper {
+        height: 25rem; }
+        div.welcome div.direction div.googlemaps-wrapper div.googlemaps-canvas {
+          height: 25rem; }
+          div.welcome div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
+            height: 25rem; }
+  div.rating-overview h3 {
+    font-size: 36px;
+    margin-bottom: 2rem;
+    padding: 0 2rem; }
+  div.contact-short > button {
+    width: calc(100% - 10rem); } }
+
+@media screen and (max-width: 438px) {
+  div.welcome h3 {
+    font-size: 36px; }
+  div.welcome h4.welcome-subtitle {
+    font-size: 20px !important; }
+  div.welcome div.direction p.long {
+    display: none; }
+  div.welcome div.direction div.googlemaps-wrapper {
+    height: 20rem; }
+    div.welcome div.direction div.googlemaps-wrapper div.googlemaps-canvas {
+      height: 20rem; }
+      div.welcome div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
+        height: 20rem; } }
+
+@media screen and (max-width: 420px) {
+  div.opening-hours {
+    padding: 0 2rem !important; } }

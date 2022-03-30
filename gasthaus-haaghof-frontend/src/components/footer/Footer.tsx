@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 export const Footer = () => {
     return(
-        <StyledFooter>
+        <StyledFooter className="footer">
             <Typography className="cr">Andreas und Katrin Kamberger, veröffentlicht 2022</Typography>
             <Link to="/imprint" className="imprint">Impressum</Link>
             <Link to="/site-admin" className="site-admin">Anmelden</Link>

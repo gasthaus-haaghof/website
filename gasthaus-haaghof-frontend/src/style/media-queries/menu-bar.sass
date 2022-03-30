@@ -1,0 +1,17 @@
+@media screen and (max-width: 500px)
+  div#menu-bar
+    grid-template-columns: 4rem auto !important
+    grid-template-areas: "menu-bar-icon-mobile currently-shown"
+    justify-items: start
+
+    > svg.menu-bar-icon-mobile, p.currently-shown
+      display: inline-block !important
+
+    > a
+      display: none
+
+.shown
+  margin-left: 0 !important
+
+.shown-background
+  opacity: 1 !important
