@@ -1,6 +1,6 @@
 package de.gasthaushaaghof.gasthaushaaghof.controller;
 
-import de.gasthaushaaghof.gasthaushaaghof.model.google.ContactInformation;
+import de.gasthaushaaghof.gasthaushaaghof.model.contactinformation.ContactInformation;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.GoogleInformation;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.OpeningHours;
 import de.gasthaushaaghof.gasthaushaaghof.model.google.Review;

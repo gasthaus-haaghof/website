@@ -1,4 +1,4 @@
-package de.gasthaushaaghof.gasthaushaaghof.model.google;
+package de.gasthaushaaghof.gasthaushaaghof.model.contactinformation;
 
 import lombok.Builder;
 import lombok.Data;

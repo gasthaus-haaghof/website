@@ -11,6 +11,20 @@ spring:
     production:
       url: ${PROD.URL:null}
 
+  mail:
+    host: ${PROD.MAIL.HOST:smtp.gmail.com}
+    port: ${PROD.MAIL.POST:587}
+    username: ${PROD.MAIL.USERNAME}
+    password: ${PROD.MAIL.PASSWORD}
+    to: ${PROD.MAIL.RECEIVER}
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   error:
     include-stacktrace: never

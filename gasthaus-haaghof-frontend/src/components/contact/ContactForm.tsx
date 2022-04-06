@@ -38,7 +38,18 @@ export const ContactForm = () => {
 
         setProcessingAPIRequest(true);
 
-        Api.Contact.contact({name, email: mail, reason}).reason;
+        Api.Contact.contact({name, email: mail, reason})
+            .then(response => {
+                if (response.status === 200) {
+                    setOpenInfo(true);
+                } else if (response.status === 202) {
+                    setOpenInfo(true);
+                } else {
+                    setOpenWarning(true);
+                }
+
+                setProcessingAPIRequest(false);
+            });
     };
 
     const handleClose = () => {
