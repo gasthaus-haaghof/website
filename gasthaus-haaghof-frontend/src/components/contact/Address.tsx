@@ -8,8 +8,7 @@ interface AddressProps {
 export const Address = ({ address } : AddressProps) => {
     return (
       <StyledAddress className="address">
-
-          <div className="wavy" style={{ height: "150px", overflow:"hidden", position: "absolute", marginTop: "-8rem", display: "none" }}>
+          <div className="wavy">
               <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%"}}>
                   <path d="M0.00,49.98 C150.00,150.00 343.11,-99.17 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style={{ stroke: "none", fill: "rgba(25, 25, 25, 1)"}}/>
               </svg>
@@ -31,5 +30,15 @@ const StyledAddress = styled.div`
     
     h6.short {
         display: none;
+    }
+    
+    div.wavy {
+        display: none;
+        position: absolute;
+        height: 150px;
+        width: 100%;
+        overflow: hidden;
+        margin-top: -8rem;
+        z-index: -2;
     }
 `;

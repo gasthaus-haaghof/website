@@ -1,41 +1,16 @@
 import {NewsType} from "../../types/NewsType";
-import {backendURL} from "../config";
+import {FetchUtils, Methods} from "../../utils/fetchUtils";
 
 const getAll = (): Promise<Array<NewsType>> => {
-    return fetch(`${backendURL}/news`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/news", Methods.get);
 };
 
 const getLatestImportant = (): Promise<NewsType> => {
-    return fetch(`${backendURL}/news/latest-important`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/news/latest-important", Methods.get);
 };
 
 const getNewsById = (id: number): Promise<NewsType> => {
-    return fetch(`${backendURL}/news/${id}`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                const reason = response.json();
-                return Promise.reject(reason);
-            }
-
-            return response.json();
-        });
+    return FetchUtils.req(`/news/${id}`, Methods.get);
 };
 
 export const News = {

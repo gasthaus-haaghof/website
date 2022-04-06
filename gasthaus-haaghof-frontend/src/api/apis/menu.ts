@@ -1,14 +1,8 @@
 import {MenuType} from "../../types/menu/MenuType";
-import {backendURL} from "../config";
+import {FetchUtils, Methods} from "../../utils/fetchUtils";
 
 const get = (): Promise<MenuType> => {
-    return fetch(`${backendURL}/menu`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/menu", Methods.get);
 };
 
 export const Menu = {

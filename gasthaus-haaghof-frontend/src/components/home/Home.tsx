@@ -11,6 +11,7 @@ import {NewsType} from "../../types/NewsType";
 import {Api} from "../../api/api";
 import {Alert, AlertTitle, Button, Snackbar} from "@mui/material";
 import {StringUtils} from "../../utils/string";
+import {A} from "../../utils/test";
 
 export const Home = () => {
     const [latestImportantNews, setLatestImportantNews] = useState<NewsType | null>(null);
@@ -18,6 +19,8 @@ export const Home = () => {
 
     useEffect(() => {
         window.scrollTo({top: 0, behavior: 'smooth'});
+
+        A.a();
 
         Api.News.getLatestImportant()
             .then(result => setLatestImportantNews(result));

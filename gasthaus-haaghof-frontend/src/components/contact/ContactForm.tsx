@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
-import {Button, TextField, Typography} from "@mui/material";
+import {Alert, AlertTitle, Button, Snackbar, TextField, Typography} from "@mui/material";
 import {useState} from "react";
+import {Validate} from "../../utils/contact";
+import {LoadingButton} from "@mui/lab";
+import {Api} from "../../api/api";
 
 export const ContactForm = () => {
     const [name, setName] = useState("");
@@ -11,10 +14,51 @@ export const ContactForm = () => {
     const [isMailError, setMailError] = useState(false);
     const [isReasonError, setReasonError] = useState(false);
 
+    const [snackbar, setSnackbar] = useState<JSX.Element>(<></>);
+    const [isProcessingAPIRequest, setProcessingAPIRequest] = useState(false);
+    const [open, setOpen] = useState(false);
+    const [openInfo, setOpenInfo] = useState(false);
+    const [openWarning, setOpenWarning] = useState(false);
+
     const handleClick = () => {
-        setNameError(true)
-        setMailError(true)
-        setReasonError(true)
+        // remove old snackbars from last request
+        setSnackbar(<></>);
+
+        const [validName, validMail, validReason] = Validate.inputFromUser(name, mail, reason);
+        const allInputValid = !validName && !validMail && !validReason;
+
+        setNameError(!!validName);
+        setMailError(!!validMail);
+        setReasonError(!!validReason);
+
+        if (!allInputValid) {
+            spawnSnackbar(validName!, validMail!, validReason!);
+            return;
+        }
+
+        setProcessingAPIRequest(true);
+
+        Api.Contact.contact({name, email: mail, reason}).reason;
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+        setOpenInfo(false);
+        setOpenWarning(false);
+    };
+
+    const spawnSnackbar = (nameReason: string, mailReason: string, reasonReason: string) => {
+        const snackbar =
+            <Snackbar key={reason} anchorOrigin={{ horizontal: "left", vertical: "bottom" }} open onClose={() => setSnackbar(<></>)}>
+                <Alert severity="error" style={{ textAlign: "start" }}>
+                    <AlertTitle>Fehler bei der Eingabe</AlertTitle>
+                    { nameReason && <span>- {nameReason} <br /></span>  }
+                    { mailReason && <span>- {mailReason} <br /></span> }
+                    { reasonReason && <span>- {reasonReason} <br /></span> }
+                </Alert>
+            </Snackbar>;
+
+        setSnackbar(snackbar);
     };
 
     return(
@@ -42,19 +86,32 @@ export const ContactForm = () => {
                 onChange={(e) => setReason(e.target.value)}
                 error={isReasonError}
             />
-            <Button
+            <LoadingButton
                 variant="outlined"
                 style={{ gridArea: "submit" }}
                 onClick={handleClick}
+                loading={isProcessingAPIRequest}
             >
                 Abschicken
-            </Button>
+            </LoadingButton>
 
             <Typography gridArea="info" variant="caption">
                 Bitte beachten Sie, dass eine Tischreservierung über das Kontakformular zunächst nicht bindend ist. Es stellt lediglich eine Anfrage an uns dar.
                 Wir werden uns mit Ihnen nach einer Anfrage, über den von Ihnen gewählten Weg (Standard: E-Mail), in Verbindung setzen und Ihre Reservierung bestätigen oder stornieren. <br/>
                 Bitte benutzen Sie daher für Tischreservierungen - sofern möglich - die Telefonnummer, da es sonst zu Verzögerungen kommen kann. Vielen Dank!
             </Typography>
+
+            { snackbar }
+
+            <Snackbar anchorOrigin={{ horizontal: "center", vertical: "bottom" }} open={open} onClose={handleClose}>
+                <Alert severity="success" style={{ textAlign: "left" }}>Ihr Anliegen wurde erfolgreich verschickt. Wir melden uns bei Ihnen!</Alert>
+            </Snackbar>
+            <Snackbar anchorOrigin={{ horizontal: "center", vertical: "bottom" }} open={openInfo} onClose={handleClose}>
+                <Alert severity="info" style={{ textAlign: "left" }}>Unser Server hat gerade Probleme beim Bearbeiten von Kontaktanfragen, aber: keine Sorge! Ihre Nachricht wurde gespeichert und wird beantwortet, sobald alles wieder rund läuft!</Alert>
+            </Snackbar>
+            <Snackbar anchorOrigin={{ horizontal: "center", vertical: "bottom" }} open={openWarning} onClose={handleClose}>
+                <Alert severity="warning" style={{ textAlign: "left" }}>Bitte probieren Sie es später erneut.</Alert>
+            </Snackbar>
         </StyledContactForm>
     );
 };

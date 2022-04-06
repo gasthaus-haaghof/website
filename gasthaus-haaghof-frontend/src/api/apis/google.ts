@@ -1,36 +1,18 @@
 import {ReviewType} from "../../types/google/ReviewType";
 import {OpeningHoursType} from "../../types/google/OpeningHoursType";
-import {backendURL} from "../config";
 import {ContactInformationType} from "../../types/google/ContactInformationType";
+import {FetchUtils, Methods} from "../../utils/fetchUtils";
 
 const getReviews = (): Promise<Array<ReviewType>> => {
-    return fetch(`${backendURL}/google/reviews`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/google/reviews", Methods.get);
 };
 
 const getOpeningHours = (): Promise<OpeningHoursType> => {
-    return fetch(`${backendURL}/google/opening-hours`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/google/opening-hours", Methods.get);
 };
 
 const getContactInformation = (): Promise<ContactInformationType> => {
-    return fetch(`${backendURL}/google/contact-information`,
-        {
-            headers : {
-                'Access-Control-Allow-Origin':'*',
-            }
-        })
-        .then(result => result.json());
+    return FetchUtils.req("/google/contact-information", Methods.get);
 };
 
 export const Google = {
