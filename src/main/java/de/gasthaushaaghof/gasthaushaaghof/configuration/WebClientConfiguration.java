@@ -16,7 +16,7 @@ public class WebClientConfiguration {
     @Bean
     public WebClient webClientForSupabaseRequests() {
         return WebClient.builder()
-                .baseUrl("https://exsbqjkwzomwzeqtxqfi.supabase.co/rest/v1")
+                .baseUrl("https://exsbqjkwzomwzeqtxqfi.supabase.com/rest/v1")
                 .build();
     }
 }
