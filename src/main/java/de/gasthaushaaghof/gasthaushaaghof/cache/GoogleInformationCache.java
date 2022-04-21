@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
+import java.util.Objects;
 
 @CacheLayer
 @EnableScheduling
@@ -31,7 +32,9 @@ public class GoogleInformationCache {
         this.apiKey = apiKey;
 
         // Initial request on startup, before scheduling takes place
-        fetchInformationFromGoogleAPI();
+        if (!Objects.equals(placeId, "null") && !Objects.equals(apiKey, "null")) {
+            fetchInformationFromGoogleAPI();
+        }
     }
 
     @Scheduled(cron = "0 1 1 * * ?") // every day (every 24h) at 1:01am

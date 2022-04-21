@@ -14,9 +14,9 @@ spring:
   mail:
     host: ${PROD.MAIL.HOST:smtp.gmail.com}
     port: ${PROD.MAIL.POST:587}
-    username: ${PROD.MAIL.USERNAME}
-    password: ${PROD.MAIL.PASSWORD}
-    to: ${PROD.MAIL.RECEIVER}
+    username: ${PROD.MAIL.USERNAME:null}
+    password: ${PROD.MAIL.PASSWORD:null}
+    to: ${PROD.MAIL.RECEIVER:null}
 
     properties:
       mail:
