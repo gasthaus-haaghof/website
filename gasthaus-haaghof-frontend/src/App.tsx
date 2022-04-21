@@ -3,13 +3,13 @@ import {Routes, Route, Navigate, BrowserRouter as Router} from "react-router-dom
 import { Home } from './components/home/Home';
 import { Menu } from "./components/menu/Menu";
 import { About } from "./components/about/About";
-import { Imprint } from "./components/Imprint";
+import { Imprint } from "./components/imprint/Imprint";
 import {Contact} from "./components/contact/Contact";
 import {Login} from "./components/admin/Login";
 import {Admin} from "./components/admin/Admin";
 import {UserInfoType} from "./types/UserInfoType";
-import {Footer} from "./components/Footer";
-import {News} from "./components/News";
+import {Footer} from "./components/footer/Footer";
+import {NewsOverview} from "./components/news/NewsOverview";
 
 function App() {
     const [isAuthenticated, setAuthenticated] = useState(false);
@@ -28,7 +28,7 @@ function App() {
                     <Route path="/home" element={ <Home/> } />
                     <Route path="/menu" element={ <Menu/> } />
                     <Route path="/about" element={ <About/> } />
-                    <Route path="/news" element={ <News/> } />
+                    <Route path="/news" element={ <NewsOverview/> } />
                     <Route path="/contact" element={ <Contact/> } />
 
                     <Route path="/imprint" element={ <Imprint/> } />
