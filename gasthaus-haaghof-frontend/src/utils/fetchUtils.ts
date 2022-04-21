@@ -9,7 +9,14 @@ const get = <U>(path: string): Promise<U> => {
         headers : {
             'Access-Control-Allow-Origin':'*',
         }
-    }).then(result => result.json());
+    }).then(response => {
+        if (!response.ok) {
+            const reason = response.json();
+            return Promise.reject(reason);
+        }
+
+        return response.json();
+    });
 };
 
 const post = <U>(path: string, body: any): Promise<U> => {
@@ -20,7 +27,14 @@ const post = <U>(path: string, body: any): Promise<U> => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
-    }).then(result => result.json());
+    }).then(response => {
+        if (!response.ok) {
+            const reason = response.json();
+            return Promise.reject(reason);
+        }
+
+        return response.json();
+    });
 };
 
 const put = (path: string, body: any) => {

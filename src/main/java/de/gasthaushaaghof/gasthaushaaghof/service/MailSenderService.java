@@ -30,7 +30,7 @@ public class MailSenderService {
         return sendCurrentMail(mailMessage);
     }
 
-    @Scheduled(cron = "0 0/30 * * * * ?")
+    @Scheduled(cron = "0 0/30 * * * ?")
     private void send() {
         queue.forEach(this::sendCurrentMail);
     }

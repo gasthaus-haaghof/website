@@ -1,24 +1,8 @@
 import {UserInfoType} from "../../types/UserInfoType";
-import {backendURL} from "../config";
+import {FetchUtils, Methods} from "../../utils/fetchUtils";
 
 const login = (user: UserInfoType): Promise<UserInfoType> => {
-    return fetch(`${backendURL}/authentication/login`,
-        {
-            method: "post",
-            headers : {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user),
-        })
-        .then(response => {
-            if (!response.ok) {
-                const reason = response.json();
-                return Promise.reject(reason);
-            }
-
-            return response.json();
-        });
+    return FetchUtils.req("/authentication/login", Methods.post, user)
 };
 
 export const Admin = {
