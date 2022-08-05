@@ -2,7 +2,7 @@ import {Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import React, {useState} from "react";
 
-import BackgroundImage from "../images/gasthaus-small.jpg"
+import BackgroundImage from "../images/pano/cover.jpg"
 import {Link} from "react-router-dom";
 
 export const Header = () => {
