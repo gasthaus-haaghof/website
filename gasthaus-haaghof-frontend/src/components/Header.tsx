@@ -55,7 +55,7 @@ const StyledWelcomeImage = styled.div`
 const MenuBar = styled.div`
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 
     display: grid;
     grid-template-columns: repeat(5, auto);

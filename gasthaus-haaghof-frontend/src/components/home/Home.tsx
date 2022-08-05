@@ -11,6 +11,7 @@ import {NewsType} from "../../types/NewsType";
 import {Api} from "../../api/api";
 import {Alert, AlertTitle, Button, Snackbar} from "@mui/material";
 import {StringUtils} from "../../utils/string";
+import {Map} from "./Map";
 
 export const Home = () => {
     const [latestImportantNews, setLatestImportantNews] = useState<NewsType | null>(null);
@@ -43,6 +44,7 @@ export const Home = () => {
                     <HistoryShort />
                 </StyledTwoGrid>
                 <ReviewOverview />
+                <Map />
                 <ContactShort />
                 <PictureSeries />
             </StyledHome>
@@ -78,7 +80,7 @@ const StyledHome = styled.div`
     justify-items: center;
     margin-top: 5rem;
     
-    grid-template-rows: repeat(5, auto);
+    grid-template-rows: repeat(6, auto);
     gap: 5rem;
 `;
 

@@ -12,7 +12,13 @@ export const MenuPart = ({ menuPart }: MenuPartProps) => {
     return(
         <StyledMenuPart style={{ gridTemplateRows: `repeat(${menuPart.meal.length + 1}, auto)`}}>
             <StyledHeading>
-                <Typography variant="h3" className="cursive">
+                <Typography
+                    variant="h3"
+                    className="cursive"
+                    border="1px solid black"
+                    borderRadius="1rem"
+                    style={{ background: "#e7dace"}}
+                >
                     {menuPart.heading}
                 </Typography>
                 <StyledDivider className="menu-divider"/>
@@ -48,6 +54,6 @@ const StyledDivider = styled.div`
     height: 0.15rem;
     margin-top: 1.8rem;
 
-    background: radial-gradient(black, black, white, white);
+    background: radial-gradient(black, black, #e7dace, #e7dace);
     z-index: -1;
 `;

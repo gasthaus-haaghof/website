@@ -89,7 +89,7 @@ export const ContactForm = () => {
                 error={isMailError}
             />
             <TextField
-                label="Ihr Anliegen"
+                label="Ihr Anliegen (Tischreservierungen bitte telefonisch)"
                 required
                 multiline
                 rows={10}

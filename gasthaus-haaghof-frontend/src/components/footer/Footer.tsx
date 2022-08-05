@@ -22,7 +22,7 @@ const StyledFooter = styled.div`
     gap: 0rem 1rem;
     
     margin-top: 5rem;
-    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     
     > p, a {
         font-size: 14px;
