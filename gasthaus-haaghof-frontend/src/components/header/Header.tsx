@@ -2,7 +2,7 @@ import {Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import {useEffect, useState} from "react";
 
-import BackgroundImage from "../../images/gasthaus-small.jpg"
+import BackgroundImage from "../../images/pano/cover.jpg"
 import {Link} from "react-router-dom";
 import {Menu, MenuOpen} from "@mui/icons-material";
 import {Path} from "../../utils/pathname";
@@ -93,8 +93,8 @@ const StyledWelcomeImage = styled.div`
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), 
         url(${BackgroundImage});
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 40%;
+    background-size: cover;
+    background-position: 50% 65%;
     
     overflow: hidden;
     

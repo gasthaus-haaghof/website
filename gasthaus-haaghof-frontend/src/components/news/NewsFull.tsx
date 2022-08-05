@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import styled from "@emotion/styled";
 import {Api} from "../../api/api";
 import {NewsType} from "../../types/NewsType";
-import {CircularProgress, LinearProgress, Typography} from "@mui/material";
+import {LinearProgress, Typography} from "@mui/material";
 import {Link} from "react-router-dom";
 import moment from "moment";
 
@@ -11,6 +11,7 @@ export const NewsFull = () => {
     const [isWaiting, setWaiting] = useState(true);
 
     useEffect(() => {
+        document.body.style.backgroundColor='white';
         const id = Number(window.location.pathname.split("/")[2]);
 
         if (isNaN(id)) {
@@ -20,11 +21,16 @@ export const NewsFull = () => {
 
         Api.News.getNewsById(id)
             .then(result => {
+                console.log(result)
                 setNews(result);
                 setWaiting(false);
             })
             .catch(_ =>  window.location.pathname = "/news");
     }, []);
+
+    useEffect( () => () => {
+        document.body.style.backgroundColor='rgba(231, 218, 206, 0.76)';
+    }, [] );
 
     return(
         <>
@@ -60,7 +66,6 @@ const StyledNewsFull = styled.div`
     justify-items: center;
     grid-template-rows: repeat(3, auto);
     
-    
     > h2 {
         position: sticky;
         top: 0;
@@ -76,5 +81,9 @@ const StyledNewsFull = styled.div`
         justify-self: start;
         margin-top: 2rem;
         color: gray;
+    }
+    
+    * {
+        background: white !important;
     }
 `;

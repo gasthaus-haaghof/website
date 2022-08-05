@@ -14,10 +14,10 @@ export const Address = ({ address } : AddressProps) => {
               </svg>
           </div>
 
-          <Typography variant="h3">„Hunger“ auf mehr?</Typography>
-          <Typography variant="h6" className="long">Kommen Sie einfach vorbei! Sie finden uns hier:</Typography>
-          <Typography variant="h6" className="short">Kommen Sie einfach vorbei!</Typography>
-          <Typography>{ address }</Typography>
+          <Typography variant="h3" zIndex={2}>„Hunger“ auf mehr?</Typography>
+          <Typography variant="h6" className="long" zIndex={2}>Kommen Sie einfach vorbei! Sie finden uns hier:</Typography>
+          <Typography variant="h6" className="short" zIndex={2}>Kommen Sie einfach vorbei!</Typography>
+          <Typography zIndex={2}>{ address }</Typography>
       </StyledAddress>
     );
 };

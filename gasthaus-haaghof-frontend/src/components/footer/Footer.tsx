@@ -6,9 +6,8 @@ import {Link} from "react-router-dom";
 export const Footer = () => {
     return(
         <StyledFooter className="footer">
-            <Typography className="cr">Andreas und Katrin Kamberger, veröffentlicht 2022</Typography>
-            <Link to="/imprint" className="imprint">Impressum</Link>
-            <Link to="/site-admin" className="site-admin">Anmelden</Link>
+            <Typography className="cr" zIndex={2}>Andreas und Katrin Kamberger, veröffentlicht 2022</Typography>
+            <Link to="/imprint" className="imprint" style={{ zIndex: 2}}>Impressum</Link>
         </StyledFooter>
     );
 };
@@ -17,7 +16,7 @@ const StyledFooter = styled.div`
     display: grid;
     grid-template-rows: auto, auto;
     grid-template-columns: auto auto;
-    grid-template-areas: "cr cr" "imprint login";
+    grid-template-areas: "cr cr" "imprint imprint";
     justify-items: center;
     gap: 0rem 1rem;
     
@@ -35,7 +34,7 @@ const StyledFooter = styled.div`
     
     > .imprint {
         grid-area: imprint;
-        justify-self: end;
+        justify-self: center;
     }
     
     > .site-admin {

@@ -14,7 +14,7 @@ export const MenuPart = ({ menuPart }: MenuPartProps) => {
             <StyledHeading>
                 <Typography
                     variant="h3"
-                    className="cursive"
+                    className="cursive menu-heading"
                     border="1px solid black"
                     borderRadius="1rem"
                     style={{ background: "#e7dace"}}

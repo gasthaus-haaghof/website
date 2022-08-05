@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 
 export const Map = () => {
     return (
-        <StyledMap>
+        <StyledMap className="map-wrapper">
             <div className="direction" style={{ gridArea: "direction" }}>
                 <Typography>Sie finden unser idyllisch-gelegenes Gasthaus zwischen Markt Erlbach und Bad Windsheim, direkt im Wald.</Typography>
                 <Typography className="long">Falls Sie aus Richtung Markt Erlbach kommen, finden Sie uns circa 2km nach der Ortsausfahrt Linden auf der linken Seite.</Typography>

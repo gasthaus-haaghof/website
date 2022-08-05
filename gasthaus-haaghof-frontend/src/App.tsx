@@ -10,6 +10,7 @@ import {Admin} from "./components/admin/Admin";
 import {UserInfoType} from "./types/UserInfoType";
 import {Footer} from "./components/footer/Footer";
 import {NewsOverview} from "./components/news/NewsOverview";
+import {NewsFull} from "./components/news/NewsFull";
 
 function App() {
     const [isAuthenticated, setAuthenticated] = useState(false);
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/menu" element={ <Menu/> } />
                     <Route path="/about" element={ <About/> } />
                     <Route path="/news" element={ <NewsOverview/> } />
+                    <Route path="/news/:id" element={ <NewsFull/> } />
                     <Route path="/contact" element={ <Contact/> } />
 
                     <Route path="/imprint" element={ <Imprint/> } />

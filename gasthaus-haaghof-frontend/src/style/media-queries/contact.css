@@ -8,14 +8,14 @@
       background: #191919;
       color: white;
       padding: 2rem 0;
-      z-index: -2; }
+      z-index: 1; }
       div.contact div.address::after {
         content: "";
         position: absolute;
         background: #191919;
         width: 100%;
         height: 22rem;
-        z-index: -2; }
+        z-index: 1; }
       div.contact div.address div.wavy {
         display: inline-block; } }
 
