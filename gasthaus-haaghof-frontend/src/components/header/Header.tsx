@@ -82,8 +82,8 @@ export const Header = () => {
 };
 
 const StyledWelcomeImage = styled.div`
-    display: grid;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
     
     width: 100vw;
     height: 25rem;
