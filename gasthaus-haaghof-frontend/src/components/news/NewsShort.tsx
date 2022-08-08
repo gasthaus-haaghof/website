@@ -27,7 +27,7 @@ export const NewsShort = ({ news } : NewsShortProps) => {
             <Typography variant="h4" gridArea="heading">{news.heading}</Typography>
             <Typography variant="caption" gridArea="ca">
                 veröffentlich am {` `}
-                { moment(news.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
+                { news && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
                 Uhr
             </Typography>
             <Typography gridArea="text">{StringUtils.substr(news.text, 200)}</Typography>

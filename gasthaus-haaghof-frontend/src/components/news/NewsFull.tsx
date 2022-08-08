@@ -41,7 +41,7 @@ export const NewsFull = () => {
                     <Typography style={{whiteSpace: 'pre-line'}}>{news?.text}</Typography>
                     <Typography variant="caption">
                         veröffentlich am {` `}
-                        { moment(news?.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
+                        { news && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
                         Uhr
                     </Typography>
                 </StyledNewsFull>

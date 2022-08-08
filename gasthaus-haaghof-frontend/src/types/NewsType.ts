@@ -1,9 +1,7 @@
-import { Moment } from "moment";
-
 export interface NewsType {
     id: number,
     heading: string,
     text: string,
-    created_at: Moment,
+    created_at: number,
     important: boolean,
 }
