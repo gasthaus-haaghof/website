@@ -5,7 +5,7 @@ const toSite = (pathname: string): string => {
         case "about": return "Über uns";
         case "news": return "Aktuelles";
         case "contact": return "Kontakt";
-        default: return "Impressum";
+        default: return "Wo sind Sie gelandet?";
     }
 };
 

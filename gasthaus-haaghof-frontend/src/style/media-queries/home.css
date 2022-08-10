@@ -8,9 +8,9 @@
   div.home-two {
     width: 50rem;
     grid-template-columns: repeat(2, 25rem); }
-    div.home-two div.history-short {
-      width: 100%;
-      padding-right: 2rem; } }
+  div.home-two div.history-short {
+    width: 100%;
+    padding-right: 2rem; } }
 
 @media screen and (max-width: 865px) {
   div.welcome, div.rating-overview, div.map-wrapper {
@@ -22,8 +22,8 @@
     grid-template-columns: auto;
     grid-template-areas: "opening-hours";
     justify-items: center; }
-    div.home-two div.history-short {
-      display: none; }
+  div.home-two div.history-short {
+    display: none; }
   div.welcome > h4.welcome-subtitle {
     padding: 0 2rem; } }
 
@@ -48,8 +48,8 @@
   div.rating-overview {
     grid-template-columns: auto;
     grid-template-areas: "text" "reviews"; }
-    div.rating-overview > div.reviews {
-      grid-template-columns: auto !important; } }
+  div.rating-overview > div.reviews {
+    grid-template-columns: auto !important; } }
 
 @media screen and (max-width: 599px) {
   #important-news {
@@ -63,17 +63,17 @@
 @media screen and (max-width: 470px) {
   div.welcome {
     padding: 0 3rem; }
-    div.welcome h4.welcome-subtitle {
-      font-size: 28px;
-      padding: 1rem 0; }
+  div.welcome h4.welcome-subtitle {
+    font-size: 28px;
+    padding: 1rem 0; }
   div.map-wrapper div.direction {
     text-align: start; }
-    div.map-wrapper div.direction div.googlemaps-wrapper {
-      height: 25rem; }
-      div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas {
-        height: 25rem; }
-        div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
-          height: 25rem; }
+  div.map-wrapper div.direction div.googlemaps-wrapper {
+    height: 25rem; }
+  div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas {
+    height: 25rem; }
+  div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
+    height: 25rem; }
   div.rating-overview h3 {
     font-size: 36px;
     margin-bottom: 2rem;
@@ -90,10 +90,10 @@
     display: none; }
   div.map-wrapper div.direction div.googlemaps-wrapper {
     height: 20rem; }
-    div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas {
-      height: 20rem; }
-      div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
-        height: 20rem; } }
+  div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas {
+    height: 20rem; }
+  div.map-wrapper div.direction div.googlemaps-wrapper div.googlemaps-canvas iframe#googlemaps-canvas {
+    height: 20rem; } }
 
 @media screen and (max-width: 420px) {
   div.opening-hours {

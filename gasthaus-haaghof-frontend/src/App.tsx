@@ -11,6 +11,7 @@ import {UserInfoType} from "./types/UserInfoType";
 import {Footer} from "./components/footer/Footer";
 import {NewsOverview} from "./components/news/NewsOverview";
 import {NewsFull} from "./components/news/NewsFull";
+import {NotFoundPage} from "./components/404/NotFoundPage";
 
 function App() {
     const [isAuthenticated, setAuthenticated] = useState(false);
@@ -37,6 +38,9 @@ function App() {
 
                     <Route path="/site-admin" element={ <Admin user={user!} authenticated={isAuthenticated}/> } />
                     <Route path="/site-admin/login" element={ <Login authenticated={isAuthenticated} onAuthenticationChange={handleAuthenticationChange}/> } />
+
+                    <Route path="/404" element={ <NotFoundPage /> } />
+                    <Route path="*" element={<Navigate replace to="/404" />} />
                 </Routes>
                 <Footer />
             </>
