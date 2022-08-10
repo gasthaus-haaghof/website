@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GoogleInformationService {
     private final GoogleInformationCache googleInformationCache;
+    private final VacationService vacationService;
 
     public GoogleInformation getCurrentInformation() {
         return googleInformationCache.getCurrentInformation();
@@ -24,6 +25,11 @@ public class GoogleInformationService {
     }
 
     public OpeningHours getOpeningHoursFromGoogle() {
+        var openingHours = googleInformationCache.getOpeningHours();
+        var onVacation = vacationService.isOnVacation();
+
+        openingHours.setOnVacation(onVacation);
+
         return googleInformationCache.getOpeningHours();
     }
 

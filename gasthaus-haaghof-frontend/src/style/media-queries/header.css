@@ -26,11 +26,11 @@
 @media screen and (max-width: 475px) {
   div.header-image {
     height: 15rem; }
-  div.header-image > p.heading {
-    font-size: 75px; }
-  div.header-image > p.sub-heading {
-    font-size: 45px;
-    margin: 9rem auto; } }
+    div.header-image > p.heading {
+      font-size: 75px; }
+    div.header-image > p.sub-heading {
+      font-size: 45px;
+      margin: 9rem auto; } }
 
 @media screen and (max-width: 370px) {
   p.sub-heading {

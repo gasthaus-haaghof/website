@@ -3,10 +3,10 @@
     grid-template-columns: 4rem auto !important;
     grid-template-areas: "menu-bar-icon-mobile currently-shown";
     justify-items: start; }
-  div#menu-bar > svg.menu-bar-icon-mobile, div#menu-bar p.currently-shown {
-    display: inline-block !important; }
-  div#menu-bar > a {
-    display: none; } }
+    div#menu-bar > svg.menu-bar-icon-mobile, div#menu-bar p.currently-shown {
+      display: inline-block !important; }
+    div#menu-bar > a {
+      display: none; } }
 
 .shown {
   margin-left: 0 !important; }

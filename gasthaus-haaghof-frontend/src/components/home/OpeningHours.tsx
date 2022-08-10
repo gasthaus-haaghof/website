@@ -9,20 +9,22 @@ import moment from "moment";
 export const OpeningHours = () => {
     const [openingHours, setOpeningHours] = useState<OpeningHoursType | null>(null);
     const [isWaiting, setWaiting] = useState(true);
+    const [isOnVacation, setOnVacation] = useState(true);
 
     useEffect(() => {
         Api.Google.getOpeningHours()
             .then(result => {
                 setOpeningHours(result);
+                setOnVacation(result.onVacation)
                 setWaiting(false);
-            })
+            });
     }, []);
 
     return(
         <StyledOpeningHours className="opening-hours">
             <Typography variant="h4" gridArea="heading">Unsere Öffnungszeiten</Typography>
             { openingHours && <Typography gridArea="isopen" style={{ marginBottom: "2rem"}}>
-                Unser Gasthaus { isOpen(openingHours) ?
+                Unser Gasthaus { isOpen(openingHours, isOnVacation) ?
                 <span>ist <span style={{ color: "darkgreen"}}>geöffnet</span>.</span> :
                 <span>hat gerade <span style={{ color: "darkred"}}>geschlossen</span>.</span>
             }</Typography> }
@@ -30,24 +32,33 @@ export const OpeningHours = () => {
                     marginTop: "5rem",
                     marginLeft: "10rem",
                 }} /> :
-                openingHours && openingHours.days.map((day, index) => reformatText(day.dayText, index))
+                openingHours && openingHours.days.map((day, index) =>
+                    reformatText(day.dayText, index, isOnVacation))
             }
         </StyledOpeningHours>
     );
 };
 
-const reformatText = (weekday: string, index: number): JSX.Element => {
+const reformatText = (weekday: string, index: number, isOnVacation: boolean): JSX.Element => {
     const split = weekday.split(": ");
 
     return(
         <React.Fragment key={index}>
             <Typography gridArea={`day${split[0]}`} className="day">{split[0]}:</Typography>
-            <Typography>{split[1] === "Geschlossen" ? "Ruhetag" : split[1].replaceAll("–", " – ")}</Typography>
+            {
+                isOnVacation ?
+                    <Typography>Urlaub</Typography> :
+                    <Typography>{split[1] === "Geschlossen" ? "Ruhetag" : split[1].replaceAll("–", " – ")}</Typography>
+            }
         </React.Fragment>
     );
 };
 
-const isOpen = (openingHours: OpeningHoursType): boolean => {
+const isOpen = (openingHours: OpeningHoursType, isOnVacation: boolean): boolean => {
+    if (isOnVacation) {
+        return false;
+    }
+
     const mom = moment();
 
     const now = mom.day();

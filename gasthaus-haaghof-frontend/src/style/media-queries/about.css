@@ -1,8 +1,8 @@
 @media screen and (max-width: 1150px) {
   div.text-part {
     grid-template-columns: auto repeat(2, 25rem) auto !important; }
-  div.text-part > div.picture {
-    background-position: 50% 50%; } }
+    div.text-part > div.picture {
+      background-position: 50% 50%; } }
 
 @media screen and (max-width: 850px) {
   div.text-part {
@@ -10,8 +10,8 @@
     grid-template-rows: 25rem fit-content(25rem);
     grid-template-areas: ". picture ." ". text ." !important;
     gap: 1rem; }
-  div.text-part > div.text {
-    text-align: center !important; } }
+    div.text-part > div.text {
+      text-align: center !important; } }
 
 @media screen and (max-width: 630px) {
   h3.heading-history {
@@ -29,6 +29,6 @@
   div.text-part {
     grid-template-columns: auto 20rem auto !important;
     grid-template-rows: 20rem fit-content(25rem); }
-  div.text-part > div.text {
-    padding: 2rem 0 0 0;
-    text-align: start !important; } }
+    div.text-part > div.text {
+      padding: 2rem 0 0 0;
+      text-align: start !important; } }

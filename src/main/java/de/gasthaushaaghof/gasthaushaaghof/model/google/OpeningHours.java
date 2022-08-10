@@ -10,4 +10,5 @@ import java.util.List;
 public class OpeningHours {
     private boolean openNow;
     private List<OpeningDay> days;
+    private boolean isOnVacation;
 }
