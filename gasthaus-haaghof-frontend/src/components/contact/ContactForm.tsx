@@ -41,7 +41,7 @@ export const ContactForm = () => {
         Api.Contact.contact({name, email: mail, reason})
             .then(response => {
                 if (response.status === 200) {
-                    setOpenInfo(true);
+                    setOpen(true);
                 } else if (response.status === 202) {
                     setOpenInfo(true);
                 } else {

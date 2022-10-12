@@ -40,6 +40,7 @@ public class MailSenderService {
             javaMailSender.send(mailMessage);
             return queue.remove(mailMessage); // true
         } catch (MailException e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
