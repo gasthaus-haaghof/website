@@ -23,11 +23,12 @@ export const OpeningHours = () => {
     return(
         <StyledOpeningHours className="opening-hours">
             <Typography variant="h4" gridArea="heading">Unsere Öffnungszeiten</Typography>
-            { openingHours && <Typography gridArea="isopen" style={{ marginBottom: "2rem"}}>
+            { openingHours && <Typography gridArea="isopen">
                 Unser Gasthaus { isOpen(openingHours, isOnVacation) ?
                 <span>ist <span style={{ color: "darkgreen"}}>geöffnet</span>.</span> :
                 <span>hat gerade <span style={{ color: "darkred"}}>geschlossen</span>.</span>
             }</Typography> }
+            <Typography gridArea="kitchen" style={{ marginBottom: "2rem"}}>Warme Küche von 11:00 Uhr bis 14:00 Uhr und {<br/>} 17:00 Uhr bis 20:00 Uhr.</Typography>
             { isWaiting ? <CircularProgress style={{
                     marginTop: "5rem",
                     marginLeft: "10rem",
@@ -83,10 +84,11 @@ const formatTimeToMinutes = (hours: string, minutes: string): number => {
 const StyledOpeningHours = styled.div`
     grid-area: opening-hours;
     display: grid;
-    grid-template-rows: repeat(9, auto);
+    grid-template-rows: repeat(10, auto);
     grid-template-columns: 12ch auto;
     grid-template-areas: "heading heading" 
                          "isopen isopen"
+                         "kitchen kitchen"
                          "dayMontag ."
                          "dayDienstag ."
                          "dayMittwoch ."
