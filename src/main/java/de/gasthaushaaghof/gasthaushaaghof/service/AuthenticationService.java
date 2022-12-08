@@ -1,6 +1,5 @@
 package de.gasthaushaaghof.gasthaushaaghof.service;
 
-
 import com.google.common.hash.Hashing;
 import de.gasthaushaaghof.gasthaushaaghof.exception.InvalidCredentialsException;
 import de.gasthaushaaghof.gasthaushaaghof.model.UserInfo;
@@ -21,14 +20,14 @@ public class AuthenticationService {
         var user = authenticationRepository.getByName(userInfo.getUsername())
                 .orElseThrow(InvalidCredentialsException::new);
 
-        if (!shaPassword(userInfo.getPassword()).equals(user.getPassword())) {
+        if (!AuthenticationService.shaPassword(userInfo.getPassword()).equals(user.getPassword())) {
             throw new InvalidCredentialsException();
         }
 
         return tokenService.getSecretToken();
     }
 
-    private String shaPassword(String password) {
+    public static String shaPassword(String password) {
         return Hashing.sha256()
                 .hashString(password, StandardCharsets.UTF_8)
                 .toString();

@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import {Api} from "../../api/api";
-import {NewsType} from "../../types/NewsType";
-import {CircularProgress, LinearProgress, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import { Api } from "../../api/api";
+import { NewsType } from "../../types/NewsType";
+import { CircularProgress, LinearProgress, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 export const NewsFull = () => {
@@ -23,19 +23,19 @@ export const NewsFull = () => {
                 setNews(result);
                 setWaiting(false);
             })
-            .catch(_ =>  window.location.pathname = "/news");
+            .catch(_ => window.location.pathname = "/news");
     }, []);
 
-    return(
+    return (
         <>
-            { isWaiting ? <LinearProgress /> :
+            {isWaiting ? <LinearProgress /> :
                 <StyledNewsFull className="news-full">
                     <Link to="/news">Zurück zu den Neuigkeiten</Link>
                     <Typography variant="h2">{news?.heading}</Typography>
-                    <Typography style={{whiteSpace: 'pre-line'}}>{news?.text}</Typography>
+                    <Typography style={{ whiteSpace: 'pre-line' }}>{news?.text}</Typography>
                     <Typography variant="caption">
                         veröffentlich am {` `}
-                        { moment(news?.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
+                        {moment(news?.created_at).format("DD.MM.yyyy, HH:mm")} {` `}
                         Uhr
                     </Typography>
                 </StyledNewsFull>

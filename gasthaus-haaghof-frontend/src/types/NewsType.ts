@@ -4,6 +4,6 @@ export interface NewsType {
     id: number,
     heading: string,
     text: string,
-    created_at: Moment,
+    created_at: Moment | undefined,
     important: boolean,
 }

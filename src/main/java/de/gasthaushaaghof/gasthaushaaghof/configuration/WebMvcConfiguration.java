@@ -21,7 +21,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry
                 .addMapping("/**")
-                .allowedOrigins(productionUrl);
+                .allowedOrigins(productionUrl)
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 
     public void addInterceptors(InterceptorRegistry registry) {

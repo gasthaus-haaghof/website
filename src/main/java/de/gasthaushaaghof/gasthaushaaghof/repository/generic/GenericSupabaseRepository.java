@@ -2,6 +2,7 @@ package de.gasthaushaaghof.gasthaushaaghof.repository.generic;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.gasthaushaaghof.gasthaushaaghof.annotation.SupabaseType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -42,8 +43,7 @@ public class GenericSupabaseRepository<T, ID> {
                     .uri(uriBuilder -> uriBuilder
                             .path(route)
                             .queryParams(queryParams)
-                            .build()
-                    )
+                            .build())
                     .header("apikey", apikey)
                     .accept(MediaType.APPLICATION_JSON)
                     .retrieve()
@@ -64,5 +64,43 @@ public class GenericSupabaseRepository<T, ID> {
 
     public List<T> getAll() {
         return getAll(null);
+    }
+
+    public T postData(String bodyValue) {
+        try {
+            return webClientForSupabaseRequests
+                    .post()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(route)
+                            .build())
+                    .header("apikey", apikey)
+                    .header("Prefer", "minimal=true")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .bodyValue(bodyValue)
+                    .retrieve()
+                    .bodyToMono(clazz)
+                    .block();
+        } catch (WebClientException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public T delete(Long id) {
+        try {
+            return webClientForSupabaseRequests
+                    .delete()
+                    .uri(uriBuilder -> uriBuilder
+                            .path(route)
+                            .query(String.format("id=eq.%s", id))
+                            .build())
+                    .header("apikey", apikey)
+                    .retrieve()
+                    .bodyToMono(clazz)
+                    .block();
+        } catch (WebClientException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
