@@ -1,6 +1,8 @@
-html, body {
+html,
+body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background: rgba(231, 219, 207, 0.76); }
 
 .no-scroll {
   height: 100%;

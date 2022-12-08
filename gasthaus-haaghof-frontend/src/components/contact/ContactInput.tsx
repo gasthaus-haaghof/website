@@ -1,10 +1,10 @@
-import {Header} from "../Header";
+import { Header } from "../Header";
 import React from "react";
 import styled from "@emotion/styled";
-import {Button, FormControl, Input, TextField} from "@mui/material";
+import { Button, FormControl, Input, TextField } from "@mui/material";
 
 export const ContactInput = () => {
-    return(
+    return (
         <StyledContactInput>
             <TextField
                 required
@@ -19,13 +19,13 @@ export const ContactInput = () => {
             <TextField
                 multiline
                 required
-                placeholder="Ihr Anliegen"
+                placeholder="Ihr Anliegen (Tischreservierungen bitte telefonisch)"
                 rows={10}
                 style={{ gridArea: "text" }}
             />
             <Button
                 variant="outlined"
-                style={{ gridArea: "send", justifySelf: "end"}}
+                style={{ gridArea: "send", justifySelf: "end" }}
             >
                 Absenden
             </Button>

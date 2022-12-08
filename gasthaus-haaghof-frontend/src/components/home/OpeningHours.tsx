@@ -1,7 +1,7 @@
-import {CircularProgress, LinearProgress, Typography} from "@mui/material";
-import {useEffect, useState} from "react";
-import {OpeningHoursType} from "../../types/google/OpeningHoursType";
-import {Api} from "../../api/api";
+import { CircularProgress, LinearProgress, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { OpeningHoursType } from "../../types/google/OpeningHoursType";
+import { Api } from "../../api/api";
 import styled from "@emotion/styled";
 import React from "react";
 import moment from "moment";
@@ -18,18 +18,20 @@ export const OpeningHours = () => {
             })
     }, []);
 
-    return(
+    return (
         <StyledOpeningHours className="opening-hours">
             <Typography variant="h4" gridArea="heading">Unsere Öffnungszeiten</Typography>
-            { openingHours && <Typography gridArea="isopen" style={{ marginBottom: "2rem"}}>
-                Unser Gasthaus { isOpen(openingHours) ?
-                <span>ist <span style={{ color: "darkgreen"}}>geöffnet</span>.</span> :
-                <span>hat gerade <span style={{ color: "darkred"}}>geschlossen</span>.</span>
-            }</Typography> }
-            { isWaiting ? <CircularProgress style={{
-                    marginTop: "5rem",
-                    marginLeft: "10rem",
-                }} /> :
+            {openingHours && <Typography gridArea="isopen">
+                Unser Gasthaus {isOpen(openingHours) ?
+                    <span>ist <span style={{ color: "darkgreen" }}>geöffnet</span>.</span> :
+                    <span>hat gerade <span style={{ color: "darkred" }}>geschlossen</span>.</span>
+                }</Typography>}
+            <Typography gridArea="warm-kitchen" style={{ marginBottom: "2rem" }}>Warme Küche von 11:00 Uhr bis 14:00 Uhr und
+                17:00 Uhr bis 20:00 Uhr.</Typography>
+            {isWaiting ? <CircularProgress style={{
+                marginTop: "5rem",
+                marginLeft: "10rem",
+            }} /> :
                 openingHours && openingHours.days.map((day, index) => reformatText(day.dayText, index))
             }
         </StyledOpeningHours>
@@ -39,7 +41,7 @@ export const OpeningHours = () => {
 const reformatText = (weekday: string, index: number): JSX.Element => {
     const split = weekday.split(": ");
 
-    return(
+    return (
         <React.Fragment key={index}>
             <Typography gridArea={`day${split[0]}`} className="day">{split[0]}:</Typography>
             <Typography>{split[1] === "Geschlossen" ? "Ruhetag" : split[1].replaceAll("–", " – ")}</Typography>
@@ -72,10 +74,11 @@ const formatTimeToMinutes = (hours: string, minutes: string): number => {
 const StyledOpeningHours = styled.div`
     grid-area: opening-hours;
     display: grid;
-    grid-template-rows: repeat(9, auto);
-    grid-template-columns: 12ch auto;
+    grid-template-rows: repeat(11, auto);
+    grid-template-columns: 12ch 25ch;
     grid-template-areas: "heading heading" 
                          "isopen isopen"
+                         "warm-kitchen warm-kitchen"
                          "dayMontag ."
                          "dayDienstag ."
                          "dayMittwoch ."

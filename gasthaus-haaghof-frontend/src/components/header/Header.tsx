@@ -1,11 +1,11 @@
-import {Typography} from "@mui/material";
+import { Typography } from "@mui/material";
 import styled from "@emotion/styled";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-import BackgroundImage from "../../images/gasthaus-small.jpg"
-import {Link} from "react-router-dom";
-import {Menu, MenuOpen} from "@mui/icons-material";
-import {Path} from "../../utils/pathname";
+import BackgroundImage from "../../images/pano/cover.jpg"
+import { Link } from "react-router-dom";
+import { Menu, MenuOpen } from "@mui/icons-material";
+import { Path } from "../../utils/pathname";
 
 export const Header = () => {
     const [fontSize] = useState(96);
@@ -43,14 +43,14 @@ export const Header = () => {
         setMenuOpen(!isMenuOpen);
     };
 
-    return(
+    return (
         <>
             <StyledWelcomeImage className="header-image">
                 <Typography className="heading" fontSize={fontSize + 32}>Gasthaus</Typography>
                 <Typography className="sub-heading cursive" fontSize={fontSize}>zur Stadt Bad Windsheim</Typography>
             </StyledWelcomeImage>
             <MenuBar id="menu-bar">
-                <Menu className="menu-bar-icon-mobile" onClick={handleClick}/>
+                <Menu className="menu-bar-icon-mobile" onClick={handleClick} />
                 <Typography className="currently-shown">{currentlyShown}</Typography>
 
                 <Link to="/home">Startseite</Link>
@@ -60,11 +60,11 @@ export const Header = () => {
                 <Link to="/contact">Kontakt</Link>
             </MenuBar>
 
-            <StyledBackground id="menu-bar-mobile-background"/>
+            <StyledBackground id="menu-bar-mobile-background" />
             <StyledMenuBarMobile id="menu-bar-mobile" className="menu-bar-mobile">
                 <div className="actual-menu" >
                     <div className="close">
-                        <MenuOpen className="menu-bar-icon-mobile" onClick={handleClick} fontSize="large"/>
+                        <MenuOpen className="menu-bar-icon-mobile" onClick={handleClick} fontSize="large" />
                         <Typography onClick={handleClick} >Menü schließen</Typography>
                     </div>
                     <div className="menu" onClick={handleClick}>
@@ -93,8 +93,8 @@ const StyledWelcomeImage = styled.div`
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0)), 
         url(${BackgroundImage});
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 40%;
+    background-size: cover;
+    background-position: 50% 70%;
     
     overflow: hidden;
     
