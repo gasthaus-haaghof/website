@@ -8,6 +8,7 @@ export const Footer = () => {
         <StyledFooter className="footer">
             <Typography className="cr" zIndex={2}>Andreas und Katrin Kamberger, veröffentlicht 2022</Typography>
             <Link to="/imprint" className="imprint" style={{ zIndex: 2}}>Impressum</Link>
+            <Link to="/site-admin" className="site-admin">Anmelden</Link>
         </StyledFooter>
     );
 };
