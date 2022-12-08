@@ -17,7 +17,7 @@ const StyledFooter = styled.div`
     display: grid;
     grid-template-rows: auto, auto;
     grid-template-columns: auto auto;
-    grid-template-areas: "cr cr" "imprint imprint";
+    grid-template-areas: "cr cr" "imprint login";
     justify-items: center;
     gap: 0rem 1rem;
     
