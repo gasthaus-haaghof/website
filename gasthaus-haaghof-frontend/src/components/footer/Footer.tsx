@@ -35,7 +35,7 @@ const StyledFooter = styled.div`
     
     > .imprint {
         grid-area: imprint;
-        justify-self: center;
+        justify-self: end;
     }
     
     > .site-admin {
