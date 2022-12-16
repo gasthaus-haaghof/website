@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import {Api} from "../../api/api";
-import {NewsType} from "../../types/NewsType";
-import {LinearProgress, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import { Api } from "../../api/api";
+import { NewsType } from "../../types/NewsType";
+import { LinearProgress, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 export const NewsFull = () => {
@@ -11,7 +11,7 @@ export const NewsFull = () => {
     const [isWaiting, setWaiting] = useState(true);
 
     useEffect(() => {
-        document.body.style.backgroundColor='white';
+        document.body.style.backgroundColor = 'white';
         const id = Number(window.location.pathname.split("/")[2]);
 
         if (isNaN(id)) {
@@ -25,23 +25,23 @@ export const NewsFull = () => {
                 setNews(result);
                 setWaiting(false);
             })
-            .catch(_ =>  window.location.pathname = "/news");
+            .catch(_ => window.location.pathname = "/news");
     }, []);
 
-    useEffect( () => () => {
-        document.body.style.backgroundColor='rgba(231, 218, 206, 0.76)';
-    }, [] );
+    useEffect(() => () => {
+        document.body.style.backgroundColor = 'rgba(231, 218, 206, 0.76)';
+    }, []);
 
-    return(
+    return (
         <>
-            { isWaiting ? <LinearProgress /> :
+            {isWaiting ? <LinearProgress /> :
                 <StyledNewsFull className="news-full">
                     <Link to="/news">Zurück zu den Neuigkeiten</Link>
                     <Typography variant="h2">{news?.heading}</Typography>
-                    <Typography style={{whiteSpace: 'pre-line'}}>{news?.text}</Typography>
+                    <Typography style={{ whiteSpace: 'pre-line' }}>{news?.text}</Typography>
                     <Typography variant="caption">
                         veröffentlich am {` `}
-                        { news && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
+                        {news && news.created_at && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm")} {` `}
                         Uhr
                     </Typography>
                 </StyledNewsFull>

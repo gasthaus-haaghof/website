@@ -1,13 +1,15 @@
-import {backendURL} from "../api/config";
+import { TokenClass } from "typescript";
+import { backendURL } from "../api/config";
 
-const req = <T extends Function, U> (path: string, fun: T, ...params: any): U => {
-    return <U>fun(path, ...params);
+const req = <T extends Function, U>(path: string, fun: T, token: string, ...params: any): U => {
+    return <U>fun(path, token, ...params);
 };
 
-const get = <U>(path: string): Promise<U> => {
+const get = <U>(path: string, token: string): Promise<U> => {
     return fetch(`${backendURL}${path}`, {
-        headers : {
-            'Access-Control-Allow-Origin':'*',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Authentication-Token': token,
         }
     }).then(response => {
         if (!response.ok) {
@@ -19,12 +21,13 @@ const get = <U>(path: string): Promise<U> => {
     });
 };
 
-const post = <U>(path: string, body: any): Promise<U> => {
+const post = <U>(path: string, token: string, body: any): Promise<U> => {
     return fetch(`${backendURL}${path}`, {
         method: 'POST',
-        headers : {
-            'Access-Control-Allow-Origin':'*',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json',
+            'Authentication-Token': token,
         },
         body: JSON.stringify(body),
     }).then(response => {
@@ -41,8 +44,22 @@ const put = (path: string, body: any) => {
 
 };
 
-const del = (path: string) => {
+const del = (path: string, token: string) => {
+    return fetch(`${backendURL}${path}`, {
+        method: 'DELETE',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+            'Authentication-Token': token,
+        },
+    }).then(response => {
+        if (!response.ok) {
+            const reason = response.json();
+            return Promise.reject(reason);
+        }
 
+        return response.json();
+    });
 };
 
 export const FetchUtils = {

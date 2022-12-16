@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from "react";
-import {NewsType} from "../../types/NewsType";
+import React, { useEffect, useState } from "react";
+import { NewsType } from "../../types/NewsType";
 import styled from "@emotion/styled";
-import {Button, Typography} from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import moment from "moment";
-import {StringUtils} from "../../utils/string";
+import { StringUtils } from "../../utils/string";
 
 import BackgroundImage from "../../images/house-2.png";
 
@@ -11,7 +11,7 @@ interface NewsShortProps {
     news: NewsType,
 }
 
-export const NewsShort = ({ news } : NewsShortProps) => {
+export const NewsShort = ({ news }: NewsShortProps) => {
     const [backgroundImage, setBackgroundImage] = useState("");
 
     useEffect(() => {
@@ -20,14 +20,14 @@ export const NewsShort = ({ news } : NewsShortProps) => {
         setBackgroundImage(imageToDisplay);
     }, []);
 
-    return(
+    return (
         <StyledNewsShort className="news-short" style={{
             background: `linear-gradient( rgba(255, 255, 255, 0.8) 100%, rgba(255, 255, 255, 0.8) 100%), url(${backgroundImage})`
         }}>
             <Typography variant="h4" gridArea="heading">{news.heading}</Typography>
             <Typography variant="caption" gridArea="ca">
                 veröffentlich am {` `}
-                { news && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm") } {` `}
+                {news && news.created_at && moment.unix(news.created_at).format("DD.MM.yyyy, HH:mm")} {` `}
                 Uhr
             </Typography>
             <Typography gridArea="text">{StringUtils.substr(news.text, 200)}</Typography>

@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
-import {Routes, Route, Navigate, BrowserRouter as Router} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Routes, Route, Navigate, BrowserRouter as Router } from "react-router-dom";
 import { Home } from './components/home/Home';
 import { Menu } from "./components/menu/Menu";
 import { About } from "./components/about/About";
 import { Imprint } from "./components/imprint/Imprint";
-import {Contact} from "./components/contact/Contact";
-import {Login} from "./components/admin/Login";
-import {Admin} from "./components/admin/Admin";
-import {UserInfoType} from "./types/UserInfoType";
-import {Footer} from "./components/footer/Footer";
-import {NewsOverview} from "./components/news/NewsOverview";
-import {NewsFull} from "./components/news/NewsFull";
-import {NotFoundPage} from "./components/404/NotFoundPage";
+import { Contact } from "./components/contact/Contact";
+import { Login } from "./components/admin/Login";
+import { Admin } from "./components/admin/Admin";
+import { UserInfoType } from "./types/UserInfoType";
+import { Footer } from "./components/footer/Footer";
+import { NewsOverview } from "./components/news/NewsOverview";
+import { NewsFull } from "./components/news/NewsFull";
+import { NotFoundPage } from "./components/404/NotFoundPage";
 
 function App() {
     const [isAuthenticated, setAuthenticated] = useState(false);
-    const [user, setUser] = useState<UserInfoType | null>(null);
+    const [user, setUser] = useState<string | null>(null);
 
-    const handleAuthenticationChange = (now: boolean, user: UserInfoType) => {
+    const handleAuthenticationChange = (now: boolean, user: string) => {
         setAuthenticated(true);
         setUser(user);
     };
@@ -26,20 +26,20 @@ function App() {
         <Router>
             <>
                 <Routes>
-                    <Route path="/" element={ <Navigate to="/home"/> } />
-                    <Route path="/home" element={ <Home/> } />
-                    <Route path="/menu" element={ <Menu/> } />
-                    <Route path="/about" element={ <About/> } />
-                    <Route path="/news" element={ <NewsOverview/> } />
-                    <Route path="/news/:id" element={ <NewsFull/> } />
-                    <Route path="/contact" element={ <Contact/> } />
+                    <Route path="/" element={<Navigate to="/home" />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/news" element={<NewsOverview />} />
+                    <Route path="/news/:id" element={<NewsFull />} />
+                    <Route path="/contact" element={<Contact />} />
 
-                    <Route path="/imprint" element={ <Imprint/> } />
+                    <Route path="/imprint" element={<Imprint />} />
 
-                    <Route path="/site-admin" element={ <Admin user={user!} authenticated={isAuthenticated}/> } />
-                    <Route path="/site-admin/login" element={ <Login authenticated={isAuthenticated} onAuthenticationChange={handleAuthenticationChange}/> } />
+                    <Route path="/site-admin" element={<Admin uuid={user!} authenticated={isAuthenticated} />} />
+                    <Route path="/site-admin/login" element={<Login authenticated={isAuthenticated} onAuthenticationChange={handleAuthenticationChange} />} />
 
-                    <Route path="/404" element={ <NotFoundPage /> } />
+                    <Route path="/404" element={<NotFoundPage />} />
                     <Route path="*" element={<Navigate replace to="/404" />} />
                 </Routes>
                 <Footer />

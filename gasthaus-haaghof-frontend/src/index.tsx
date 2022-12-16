@@ -14,10 +14,11 @@ import './style/media-queries/news.css';
 import './style/media-queries/contact.css';
 import './style/media-queries/imprint.css';
 import './style/media-queries/footer.css';
+import './style/media-queries/admin.css';
 
 ReactDOM.render(
   <React.StrictMode>
-      <App />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
