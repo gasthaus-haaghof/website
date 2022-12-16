@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import {Alert, AlertTitle, Button, Snackbar, TextField, Typography} from "@mui/material";
-import {useState} from "react";
-import {Validate} from "../../utils/contact";
-import {LoadingButton} from "@mui/lab";
-import {Api} from "../../api/api";
+import { Alert, AlertTitle, Button, Snackbar, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { Validate } from "../../utils/contact";
+import { LoadingButton } from "@mui/lab";
+import { Api } from "../../api/api";
 
 export const ContactForm = () => {
     const [name, setName] = useState("");
@@ -38,7 +38,7 @@ export const ContactForm = () => {
 
         setProcessingAPIRequest(true);
 
-        Api.Contact.contact({name, email: mail, reason})
+        Api.Contact.contact({ name, email: mail, reason })
             .then(response => {
                 if (response.status === 200) {
                     setOpen(true);
@@ -63,16 +63,16 @@ export const ContactForm = () => {
             <Snackbar key={reason} anchorOrigin={{ horizontal: "left", vertical: "bottom" }} open onClose={() => setSnackbar(<></>)}>
                 <Alert severity="error" style={{ textAlign: "start" }}>
                     <AlertTitle>Fehler bei der Eingabe</AlertTitle>
-                    { nameReason && <span>- {nameReason} <br /></span>  }
-                    { mailReason && <span>- {mailReason} <br /></span> }
-                    { reasonReason && <span>- {reasonReason} <br /></span> }
+                    {nameReason && <span>- {nameReason} <br /></span>}
+                    {mailReason && <span>- {mailReason} <br /></span>}
+                    {reasonReason && <span>- {reasonReason} <br /></span>}
                 </Alert>
             </Snackbar>;
 
         setSnackbar(snackbar);
     };
 
-    return(
+    return (
         <StyledContactForm className="contact-form">
             <TextField
                 label="Ihr Name"
@@ -110,8 +110,7 @@ export const ContactForm = () => {
                 Bitte beachten Sie, Tischreservierungen über das Kontaktformular <b>mindestens 3 Tage im Voraus</b> zu stellen. Bei <b>kurzfristigeren</b> Anfragen bitten wir um <b>telefonische Kontaktaufnahme</b>!
             </Typography>
 
-            { snackbar }
-
+            {snackbar}
             <Snackbar anchorOrigin={{ horizontal: "center", vertical: "bottom" }} open={open} onClose={handleClose}>
                 <Alert severity="success" style={{ textAlign: "left" }}>Ihr Anliegen wurde erfolgreich verschickt. Wir melden uns bei Ihnen!</Alert>
             </Snackbar>
